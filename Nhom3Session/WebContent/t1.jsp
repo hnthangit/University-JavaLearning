@@ -1,3 +1,4 @@
+<%@page import="bo.GioHangBo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="bean.SachBean"%>
 <%@page import="bo.SachBo"%>
@@ -18,11 +19,27 @@
 	%>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="#">Navbar</a>
 	<div class="navbar-nav">
-		<a class="nav-item nav-link" href="t1.jsp">trang1</a>
-		<a class="nav-item nav-link" href="t2.jsp">trang2</a>
+		<a class="nav-item nav-link" href="t1.jsp">San pham</a>
+
 		<%
 			if (session.getAttribute("un") != null) {
 				//out.print("Chao mung ban: "+ session.getAttribute("un")+ " den voi trang web");
+				if (session.getAttribute("giohang") != null) {
+					GioHangBo gh = (GioHangBo) session.getAttribute("giohang");
+					if (gh.ds.size() == 0) {
+		%>
+		<a class="nav-item nav-link" href="t2.jsp">Gio hang: 0</a>
+		<%
+			} else {
+		%>
+		<a class="nav-item nav-link" href="t2.jsp">
+			Gio hang(
+			<%=gh.ds.size() + ": " + gh.tong()%>)
+		</a>
+
+		<%
+			}
+				}
 		%>
 		<a class="nav-link" href="login.jsp"><%=session.getAttribute("un")%></a>
 		<%
@@ -33,7 +50,7 @@
 			}
 		%>
 
-		<a class="nav-item nav-link" href="#">Dang xuat</a>
+		<a class="nav-item nav-link" href="dangxuat.jsp">Dang xuat</a>
 	</div>
 	</nav>
 	<table class="table" align="center" width="800px">

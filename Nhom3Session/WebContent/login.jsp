@@ -10,8 +10,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
     <div class="navbar-nav">
-      <a class="nav-item nav-link" href="t1.jsp">trang1</a>
-      <a class="nav-item nav-link" href="t2.jsp">trang2</a>
+      <a class="nav-item nav-link" href="t1.jsp">San pham</a>
+      <a class="nav-item nav-link" href="t2.jsp">Gio hang</a>
       <a class="nav-item nav-link" href="login.jsp">Dang nhap</a>
       <a class="nav-item nav-link" href="#">Dang xuat</a>
     </div>
