@@ -7,40 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-		String so1 = request.getParameter("txtso1");
-		String so2 = request.getParameter("txtso2");
-		String but1 = request.getParameter("but1");
-		long a, b, kq = 0;
-		if (so1 != null && so2 != null && but1 != null) {
-	%>
-	<%=so1 + "  " + so2 + "  " + but1 + "<br>"%>
 	<%
-		a = Long.parseLong(so1);
-			b = Long.parseLong(so2);
-
-			if (but1.equals("+"))
-				kq = a + b;
-			else if (but1.equals("-"))
-				kq = a - b;
-			else if (but1.equals("*"))
-				kq = a * b;
-			else if (b==0)
-				out.print("<script>alert('bo tay');</script>");
-			else
-				kq = a / b;
+	long so1=0,so2=0,kq=0;
+	if(request.getAttribute("kq")!=null){
+		 so1 = (long)request.getAttribute("txtso1");
+		 so2 =(long) request.getAttribute("txtso2");
+		 kq = (long) request.getAttribute("kq");
+	}
+		
 	%>
-	<%=so1 + "  " + but1 + "  " + so2 + " = " + kq%>
-	<%
-		}
-	%>
-	<form method= 'post' action="maytinh.jsp">
+	<form method= 'post' action="MaytinhController">
 	So 1: 
-	<input type="number" name="txtso1" value = '<%if (so1!=null) out.print(so1);%>'> <br>
+	<input type="number" name="txtso1" value = '<%if (request.getAttribute("txtso1")!=null) out.print(so1);%>'> <br>
 	So 2:
-	<input type="number" name="txtso2" value = '<%if (so2!=null) out.print(so2);%>'> <br>
+	<input type="number" name="txtso2" value = '<%if (request.getAttribute("txtso2")!=null) out.print(so2);%>'> <br>
 	Ket qua:
-	<input type="number" name="txtkq" value = '<%if (kq !=0) out.print(kq);%>'> <br>
+	<input type="number" name="txtkq" value = '<%if (request.getAttribute("kq")!=null) out.print(kq);%>'> <br>
 	<input type="submit" name="but1" value = '+'> <br>
 	<input type="submit" name="but1" value = '-'> <br>
 	<input type="submit" name="but1" value = '*'> <br>
