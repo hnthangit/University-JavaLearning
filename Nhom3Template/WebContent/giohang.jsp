@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="bean.GioHangBean"%>
 <%@page import="bo.GioHangBo"%>
 <%@ page language="java" contentType="text/html; charset=Utf-8" pageEncoding="utf-8"%>
@@ -69,15 +70,17 @@
 				<li>
 					<a href="giohang" style="color: white; font-weight: bold; text-decoration: none;">
 						<%
-							GioHangBo gh1 =null;
-							gh1 = (GioHangBo) session.getAttribute("giohang");
+							//GioHangBo gh1 =null;
+							//gh1 = (GioHangBo) session.getAttribute("giohang");
+							ArrayList<GioHangBean> gh1 = new ArrayList<>();
+							gh1= (ArrayList<GioHangBean>) session.getAttribute("giohang");
 							if (gh1 == null) {
 						%>
 						<img src="images/giohang.gif" />Giỏ Hàng (0)
 						<%
 							} else {
 						%>
-						<img src="images/giohang.gif" />Giỏ Hàng (<%=gh1.ds.size()%>)
+						<img src="images/giohang.gif" />Giỏ Hàng (<%=gh1.size()%>)
 						<%
 							}
 						%>
@@ -177,8 +180,10 @@
 							</tr>
 
 							<%
-								GioHangBo gh = (GioHangBo) session.getAttribute("giohang");
-								for (GioHangBean g : gh.ds) {
+								//GioHangBo gh = (GioHangBo) session.getAttribute("giohang");
+							//for (GioHangBean g : gh.ds) {
+							ArrayList<GioHangBean> ghb = (ArrayList<GioHangBean>) session.getAttribute("giohang");
+							for (GioHangBean g : ghb) {
 							%>
 							<tr style="text-align: center; font-weight: bold">
 								<td><%=g.getMasach()%></td>
@@ -212,10 +217,17 @@
 							<tr style="font-weight: bold; text-align: right; color: red">
 								<td colspan="4">
 									Số lượng sách:
-									<%=gh.ds.size()%></td>
+									<%=ghb.size()%></td>
 								<td colspan="5">
 									Tổng tiền:
-									<%=gh.tongTien()%></td>
+									<%
+									int tong = 0;
+									for (GioHangBean g : ghb) {
+										tong += g.getThanhtien();
+									}
+									out.print(tong);
+								%>
+								</td>
 							</tr>
 							<tr style="font-weight: bold; color: blue; text-align: right">
 								<td colspan="9">

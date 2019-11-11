@@ -1,3 +1,4 @@
+<%@page import="bean.GioHangBean"%>
 <%@page import="bo.GioHangBo"%>
 <%@page import="bean.LoaiBean"%>
 <%@page import="bean.SachBean"%>
@@ -68,16 +69,17 @@
 				<li>
 					<a href="giohang" style="color: white; font-weight: bold; text-decoration: none;">
 						<%
-							GioHangBo gh = null;
-							gh = (GioHangBo)session.getAttribute("giohang");
-
+							//GioHangBo gh = null;
+							//gh = (GioHangBo)session.getAttribute("giohang");
+							ArrayList<GioHangBean> gh = null;
+							gh= (ArrayList<GioHangBean>) session.getAttribute("giohang");
 							if (gh == null) {
 						%>
 						<img src="images/giohang.gif" />Giỏ Hàng (0)
 						<%
 							} else {
 						%>
-						<img src="images/giohang.gif" />Giỏ Hàng (<%=gh.ds.size() %>)
+						<img src="images/giohang.gif" />Giỏ Hàng (<%=gh.size() %>)
 						<%
 							}
 						%>
