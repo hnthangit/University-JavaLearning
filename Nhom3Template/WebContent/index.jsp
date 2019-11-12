@@ -1,5 +1,4 @@
 <%@page import="bean.GioHangBean"%>
-<%@page import="bo.GioHangBo"%>
 <%@page import="bean.LoaiBean"%>
 <%@page import="bean.SachBean"%>
 <%@page import="java.util.ArrayList"%>
