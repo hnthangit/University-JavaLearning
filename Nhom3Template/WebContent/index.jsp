@@ -127,6 +127,10 @@
 			<div class="col-md-9">
 				<div class="row carousel-holder">
 					<div class="col-md-12">
+					<form action="timsach">
+						<input type="text" name="key">
+					</form>
+					<br>
 						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 							<ol class="carousel-indicators">
 								<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

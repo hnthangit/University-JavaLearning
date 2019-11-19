@@ -69,4 +69,32 @@ public class SachDao {
 		dc.cn.close();
 		return ds;
 	}
+	
+	public ArrayList<SachBean> tim(String key) throws Exception {
+		ArrayList<SachBean> ds = new ArrayList<>();
+
+		// B1: Ket noi vao csdl
+		dc.KetNoi();
+		// B2: Lay du lieu ve
+		String sql = "select * from sach where tensach like ?";
+		PreparedStatement cmd = dc.cn.prepareStatement(sql);
+		cmd.setString(1, "%" + key + "%");
+		ResultSet rs = cmd.executeQuery(); // Lay du lieu ve
+		while (rs.next()) {
+			String masach = rs.getString("masach");
+			String tensach = rs.getString("tensach");
+			String tacgia = rs.getString("tacgia");
+			long gia = rs.getLong("gia");
+			String anh = rs.getString("anh");
+			Date ngaynhap = rs.getDate("ngaynhap");
+			String maloai = rs.getString("maloai");
+			
+			SachBean sach = new SachBean(masach, tensach, tacgia, gia, anh, ngaynhap, maloai);
+			ds.add(sach);
+		}	
+		// B3: dong ket noi
+		rs.close();
+		dc.cn.close();
+		return ds;
+	}
 }
