@@ -14,15 +14,25 @@
 </head>
 <body>
 <%
+String maloaiduocchon = "", tenloaiduocchon="";
 if(request.getAttribute("ktnhap")!=null)
 	out.print("<script>alert('Trùng mã')</script>");
 if(request.getAttribute("ktxoa")!=null)
 	out.print("<script>alert('Loại có sách ko thể xóa')</script>");
+if(request.getAttribute("chon")!=null){
+	LoaiBean loaiduocchon = (LoaiBean) request.getAttribute("chon");
+	maloaiduocchon = loaiduocchon.getMaloai();
+	tenloaiduocchon = loaiduocchon.getTenloai();	
+}
+if(request.getAttribute("ktsua")!=null)
+	out.print("<script>alert('ko ton tai mã de cap nhat')</script>");
+	
 %>
-<form action="admin" method="post">
+<form action="loaiadmin" method="post">
 <label>Mã loại</label>
-<input class="form-control" type="text" name="txtmaloai" value=""><br>
-<input class="form-control" type="text" name="txttenloai" value=""><br>
+<input class="form-control" type="text" name="txtmaloai" value="<%=maloaiduocchon%>"><br>
+<label>Ten loại</label>
+<input class="form-control" type="text" name="txttenloai" value="<%=tenloaiduocchon%>"><br>
 <input class="btn btn-outline-secondary" type="submit" name="butthem" value="Thêm">
 <input class="btn btn-outline-primary" type="submit" name="butsua" value="Sửa">
 <br>
@@ -41,8 +51,8 @@ if(request.getAttribute("ktxoa")!=null)
 			<tr>
 				<td><%=loai.getMaloai()%></td>
 				<td><%=loai.getTenloai()%></td>
-				<td><a class="btn btn-outline-success" href="admin?mlchon=<%=loai.getMaloai()%>">Chọn</a></td>
-				<td><a class="btn btn-outline-danger" href="admin?mlxoa=<%=loai.getMaloai()%>">Xóa</a></td>
+				<td><a class="btn btn-outline-success" href="loaiadmin?mlchon=<%=loai.getMaloai()%>">Chọn</a></td>
+				<td><a class="btn btn-outline-danger" href="loaiadmin?mlxoa=<%=loai.getMaloai()%>">Xóa</a></td>
 			</tr>
 			<%
 				}

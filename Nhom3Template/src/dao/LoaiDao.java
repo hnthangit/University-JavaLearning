@@ -44,7 +44,7 @@ public class LoaiDao {
 
 	public int Sua(String maloai, String tenloaimoi) throws Exception {
 		dc.KetNoi();
-		if(KtMa(maloai)) return 0;
+		if(KtMa(maloai)==false) return 0;
 		String sql = "update loai set tenloai=? where maloai = ?";
 		PreparedStatement cmd = dc.cn.prepareStatement(sql);
 		cmd.setString(1, tenloaimoi);

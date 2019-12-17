@@ -14,7 +14,7 @@ import bo.LoaiBo;
 /**
  * Servlet implementation class AdminController
  */
-@WebServlet("/admin")
+@WebServlet("/loaiadmin")
 public class LoaiAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +42,7 @@ public class LoaiAdminController extends HttpServlet {
 			if (request.getParameter("butthem") != null) {
 				int n= loaiBo.Them(maloai, tenloai);
 				if(n==0) request.setAttribute("ktnhap", 0);
+				System.out.println(request.getParameter("butthem"));
 			}
 			if (request.getParameter("butsua") != null) {
 				int n= loaiBo.Sua(maloai, tenloai);
